@@ -426,45 +426,81 @@ main {
   gap: 2px;
   background: #222;
 }
-.work-card {
+/* Projects page */
+.project {
   position: relative;
-  min-height: 430px;
   background: #0b0b0b;
   overflow: hidden;
   border: 1px solid #222;
+  min-width: 0;
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
 }
-.work-card img {
+
+.project:hover {
+  transform: translateY(-5px);
+  border-color: #3b3b3b;
+  background: #101010;
+}
+
+.project-art {
+  position: relative;
+  overflow: hidden;
+  background: #070707;
+  aspect-ratio: 16 / 10;
+}
+
+.project-tall .project-art {
+  aspect-ratio: 4 / 5;
+}
+
+.project-wide .project-art {
+  aspect-ratio: 16 / 9;
+}
+
+.project-art img,
+.project-art video {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
-  opacity: 0.72;
-  transition: 0.6s;
+  opacity: 0.82;
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
 }
-.work-card:hover img {
-  transform: scale(1.04);
-  opacity: 0.5;
+
+.project:hover .project-art img,
+.project:hover .project-art video {
+  transform: scale(1.035);
+  opacity: 0.68;
 }
-.work-overlay {
-  position: absolute;
-  inset: 0;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.86)
-  );
+
+.project-meta {
+  padding: 24px 26px 28px;
+  border-top: 1px solid #222;
 }
-.work-overlay h3 {
-  font-size: clamp(30px, 4vw, 55px);
-  letter-spacing: -0.07em;
-  margin: 10px 0;
+
+.project-meta h3 {
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  margin: 8px 0 10px;
 }
-.work-overlay .tag {
+
+.project-meta p {
+  color: #777;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 13px;
+}
+
+.project-meta .tag {
   color: #bbb;
 }
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -707,6 +743,12 @@ main {
   .work-grid {
     grid-template-columns: 1fr;
   }
+
+  .project-tall .project-art,
+  .project-wide .project-art,
+  .project-art {
+    aspect-ratio: 16 / 10;
+  }
   .site-footer {
     grid-template-columns: 1fr;
   }
@@ -741,5 +783,28 @@ main {
   }
   .stat strong {
     font-size: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee div {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
