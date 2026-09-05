@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shubiq-webcoder.github.io/Shubiq-Ventures/sitemap.xml
